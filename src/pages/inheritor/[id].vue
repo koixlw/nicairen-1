@@ -29,13 +29,7 @@
 			</p>
 		</div>
 
-		<!-- 错误提示 -->
-		<div v-else-if="error" class="error-container">
-			<div class="error-icon">⚠️</div>
-			<h2 class="error-title">加载失败</h2>
-			<p class="error-message">{{ error }}</p>
-			<button @click="loadInheritorDetail" class="retry-button">重试</button>
-		</div>
+
 
 		<!-- 传承人详情内容 -->
 		<div v-else-if="detail && detail.basicInfo" class="detail-content">
@@ -440,19 +434,47 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getInheritorDetailById } from '../api/inheritor'
+
 
 // 导入本地图片资源
 import badgeIcon from '@/image/徽章.png'
 import regionIcon from '@/image/我的页_地区.png'
 import dateIcon from '@/image/日期.png'
+import { toast } from 'vue-sonner'
 
 const route = useRoute()
 const router = useRouter()
 
-const detail = ref(null)
+
+interface InheritorDetail {
+	basicInfo: {
+    name: string
+    levelDisplayName: string
+		imageUrl: string
+		level: string
+		title: string
+    year: string
+    craftType: string
+		workshopAddress: string
+		officialWebsite: string
+    regionDisplayName: string
+	}
+	worksCount: number
+	exhibitionsCount: number
+	awardsCount: number
+	apprenticesCount: number
+  fullBiography: string
+  educationBackground: string
+  personalStory: string
+  philosophy: string
+  careerHistory: string
+  inheritanceLineage: string
+  masterInfo:string
+
+}
+const detail = ref<InheritorDetail>()
 const loading = ref(false)
-const error = ref(null)
+
 const showBackToTop = ref(false)
 
 // 是否有统计信息
@@ -465,11 +487,13 @@ const hasStats = computed(() => {
 	)
 })
 
+
+
 // 加载传承人详情
 const loadInheritorDetail = async () => {
 	try {
 		loading.value = true
-		error.value = null
+		
 
 		const id = route.params.id
 		console.log('正在加载传承人详细信息，ID:', id)
@@ -480,11 +504,12 @@ const loadInheritorDetail = async () => {
 		if (response) {
 			detail.value = response
 		} else {
-			error.value = '未找到该传承人信息'
+			
+      toast.error('未找到该传承人信息')
 		}
 	} catch (err) {
 		console.error('加载传承人详细信息失败:', err)
-		error.value = err.message || '加载失败，请稍后重试'
+		toast.error((err as Error)?.message || '加载失败，请稍后重试')
 	} finally {
 		loading.value = false
 	}

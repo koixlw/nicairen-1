@@ -1,4 +1,5 @@
 <template>
+     <Toaster position="top-right" />
   <div class="app-wrapper">
     <Header />
     <main class="main-content">
@@ -7,6 +8,7 @@
     <Footer />
     <BackToTop />
     <BackgroundMusic />
+  
   </div>
 </template>
 
@@ -15,6 +17,8 @@ import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import BackToTop from '@/components/BackToTop.vue';
 import BackgroundMusic from '@/components/BackgroundMusic.vue';
+  import 'vue-sonner/style.css'
+  import { Toaster, toast } from 'vue-sonner'
 </script>
 
 <style scoped>
