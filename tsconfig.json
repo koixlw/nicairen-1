@@ -3,7 +3,8 @@
   "compilerOptions": {
     "types": [
       "unplugin-vue-router/client" // 添加这一行
-    ]
+    ],
+    "strictNullChecks": true
   },
   "references": [
     {

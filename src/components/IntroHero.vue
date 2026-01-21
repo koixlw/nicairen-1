@@ -7,8 +7,12 @@
 
     <div class="hero-content container">
       <h1 class="hero-title">
-        <span class="char-block" v-for="(char, index) in titleChars" :key="index"
-          :style="{ animationDelay: index * 0.15 + 's' }">
+        <span
+          class="char-block"
+          v-for="(char, index) in titleChars"
+          :key="index"
+          :style="{ animationDelay: index * 0.15 + 's' }"
+        >
           {{ char }}
         </span>
       </h1>
@@ -22,24 +26,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useAttrs } from 'vue';
+  import { computed, useAttrs } from "vue";
 
-const props = defineProps({
-  title: { type: String, default: '泥韵千秋' },
-  subtitle: { type: String, default: '从指尖的温度，到数字的永恒' },
-  // 使用静态路径，避免在运行时依赖 require
-  videoSrc: { type: String, default: '/src/assets/video/lizihua.mp4' }
-});
+  const props = defineProps({
+    title: { type: String, default: "泥韵千秋" },
+    subtitle: { type: String, default: "从指尖的温度，到数字的永恒" },
+    // 使用静态路径，避免在运行时依赖 require
+    videoSrc: { type: String, default: "/src/assets/video/lizihua.mp4" },
+  });
 
-const titleChars = computed(() => props.title.split(''));
+  const titleChars = computed(() => props.title.split(""));
 
-const scrollToStart = () => {
-  const el = document.getElementById('start');
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-};
+  const scrollToStart = () => {
+    const el = document.getElementById("start");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
-const handleMouseMove = (e: MouseEvent) => {
-  // 保留 hook，按需实现视差效果
-};
+  const handleMouseMove = (e: MouseEvent) => {
+    // 保留 hook，按需实现视差效果
+  };
 </script>

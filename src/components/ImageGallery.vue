@@ -1,5 +1,5 @@
 <template>
-    <div>图片画廊</div>
+  <div>图片画廊</div>
 </template>
 <script setup lang="ts">
 </script>

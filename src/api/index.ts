@@ -1,3 +1,4 @@
 // 导出所有API
-export { reserveApi } from './reserve'
-export { activityApi } from './activity'
+
+export { activityApi } from "./activity";
+export { reserveApi } from "./reserve";

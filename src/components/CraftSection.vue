@@ -5,12 +5,20 @@
       <div class="section-header text-center" v-scroll-reveal>
         <span class="section-tag light">技艺 · Craft</span>
         <h2 class="section-heading light">七分塑，三分彩</h2>
-        <p class="section-desc light">每一次捏塑都是与泥土的对话，每一笔彩绘都是灵魂的注入。</p>
+        <p class="section-desc light">
+          每一次捏塑都是与泥土的对话，每一笔彩绘都是灵魂的注入。
+        </p>
       </div>
 
       <div class="craft-grid">
-        <CraftCard v-for="(c, idx) in items" :key="idx" :icon="c.icon" :title="c.title" :description="c.desc"
-          :delay="c.delay" />
+        <CraftCard
+          v-for="(c, idx) in items"
+          :key="idx"
+          :icon="c.icon"
+          :title="c.title"
+          :description="c.desc"
+          :delay="c.delay"
+        />
       </div>
 
       <div class="craft-spotlight" v-scroll-reveal>
@@ -21,19 +29,19 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from 'vue';
-import CraftCard from './CraftCard.vue';
+  import type { PropType } from "vue";
+  import CraftCard from "./CraftCard.vue";
 
-interface CraftItem {
-  icon: string;
-  title: string;
-  desc: string;
-  delay: number;
-}
+  interface CraftItem {
+    icon: string;
+    title: string;
+    desc: string;
+    delay: number;
+  }
 
-const props = defineProps({
-  items: { type: Array as PropType<CraftItem[]>, default: () => [] },
-  // 使用静态路径作为默认值
-  spotlightSrc: { type: String, default: '/src/assets/images/shoubu.png' }
-});
+  const props = defineProps({
+    items: { type: Array as PropType<CraftItem[]>, default: () => [] },
+    // 使用静态路径作为默认值
+    spotlightSrc: { type: String, default: "/src/assets/images/shoubu.png" },
+  });
 </script>

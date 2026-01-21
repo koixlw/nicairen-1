@@ -1,27 +1,25 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-
-import App from './App.vue'
-import { createRouter, createWebHistory } from 'vue-router'
-import { routes } from 'vue-router/auto-routes'
-import './assets/styles/base.css';
-import i18n from './locales';
+import { createPinia } from "pinia";
+import { createApp } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
+import { routes } from "vue-router/auto-routes";
+import App from "./App.vue";
+import "./assets/styles/base.css";
+import i18n from "./locales";
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
 
-const app = createApp(App)
-app.use(createPinia())
-app.use(router)
+const app = createApp(App);
+app.use(createPinia());
+app.use(router);
 app.use(i18n);
 
-
 // 全局滚动动画指令
-app.directive('scroll-reveal', {
+app.directive("scroll-reveal", {
   mounted: (el, binding) => {
-    el.classList.add('reveal');
+    el.classList.add("reveal");
 
     // 处理传入的参数 (delay)
     if (binding.value) {
@@ -36,22 +34,25 @@ app.directive('scroll-reveal', {
       }
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          el.classList.add('active');
-          observer.unobserve(el);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            el.classList.add("active");
+            observer.unobserve(el);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
 
     observer.observe(el);
-  }
+  },
 });
 
-app.mount('#app')
+app.mount("#app");
 
-console.log('App mounted successfully');
+console.log("App mounted successfully");
