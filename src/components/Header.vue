@@ -21,11 +21,11 @@
           </li>
           <li class="nav-item">
             <router-link
-              to="/about"
+              to="/introduction"
               class="nav-link"
-              :class="{ active: isActive('/about') }"
+              :class="{ active: isActive('/introduction') }"
             >
-              {{ $t('nav.about') }}
+              {{ $t('nav.craft') }}
             </router-link>
           </li>
           <li class="nav-item">
@@ -44,6 +44,15 @@
               :class="{ active: isActive('/gallery') }"
             >
               {{ $t('nav.gallery') }}
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link
+              to="/shop"
+              class="nav-link"
+              :class="{ active: isActive('/shop') }"
+            >
+              {{ $t('nav.shop') }}
             </router-link>
           </li>
           <li class="nav-item">
@@ -76,20 +85,20 @@
           </li>
           <li class="nav-item">
             <router-link
-              to="/shop"
-              class="nav-link"
-              :class="{ active: isActive('/shop') }"
-            >
-              {{ $t('nav.shop') }}
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
               to="/reserve"
               class="nav-link"
               :class="{ active: isActive('/reserve') }"
             >
               {{ $t('nav.reserve') }}
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link
+              to="/about"
+              class="nav-link"
+              :class="{ active: isActive('/about') }"
+            >
+              {{ $t('nav.about') }}
             </router-link>
           </li>
           <li class="nav-item language-switcher">

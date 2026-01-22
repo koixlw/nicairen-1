@@ -32,8 +32,13 @@
           <h3 class="footer-title">快速链接</h3>
           <ul class="link-list">
             <li>
-              <router-link to="/about" class="footer-link">
-                关于我们
+              <router-link to="/" class="footer-link">
+                首页
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/introduction" class="footer-link">
+                制作工艺
               </router-link>
             </li>
             <li>
@@ -47,10 +52,18 @@
               </router-link>
             </li>
             <li>
+              <router-link to="/shop" class="footer-link">商城</router-link>
+            </li>
+            <li>
               <router-link to="/news" class="footer-link">新闻动态</router-link>
             </li>
             <li>
-              <router-link to="/shop" class="footer-link">商城</router-link>
+              <router-link to="/reserve" class="footer-link">预约体验</router-link>
+            </li>
+            <li>
+              <router-link to="/about" class="footer-link">
+                关于我们
+              </router-link>
             </li>
           </ul>
         </div>

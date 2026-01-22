@@ -164,9 +164,13 @@
     <section class="section vision-section">
       <div class="vision-bg-overlay"></div>
       <div class="container vision-content" v-scroll-reveal>
-        <h2 class="vision-title">传承不是守旧，而是创新</h2>
+        <h2 class="vision-title">
+          <span class="title-traditional">传承</span>
+          <span class="title-connector">不是守旧，而是</span>
+          <span class="title-modern">创新</span>
+        </h2>
         <p class="vision-text">
-          我们将继续探索“非遗+科技”的无界未来。
+          我们将继续探索"非遗+科技"的无界未来。
           <br>
           打造沉浸式虚拟展馆，开发寓教于乐的游戏...
           <br>
@@ -178,7 +182,6 @@
           <router-link to="/contact" class="btn primary-btn pulse-anim">
             加入我们
           </router-link>
-          <router-link to="/shop" class="btn outline-btn">支持文创</router-link>
         </div>
       </div>
     </section>
@@ -733,98 +736,216 @@
   /* --- Vision Section --- */
   .vision-section {
     position: relative;
-    background: #2c1e1c;
-    color: #fff;
+    background: var(--color-bg);
+    color: var(--color-text);
     text-align: center;
-    padding: 120px 0;
+    padding: var(--space-10) 0;
+    overflow: hidden;
   }
 
   .vision-bg-overlay {
     position: absolute;
     inset: 0;
     background-image: url("@/assets/images/shoubu.png");
-    /* 使用手部图作为隐约背景 */
     background-size: cover;
     background-position: center;
-    opacity: 0.1;
+    opacity: 0.08;
     mix-blend-mode: overlay;
+    filter: blur(2px);
+  }
+
+  /* 添加装饰性渐变背景 */
+  .vision-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(217, 59, 48, 0.03) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
   }
 
   .vision-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 700px;
+    margin: 0 auto;
   }
 
   .vision-title {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
-    margin-bottom: 30px;
-    background: linear-gradient(135deg, #fff 0%, #fdf6ec 100%);
+    margin-bottom: var(--space-5);
+    line-height: 1.3;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* "传承" - 书法碑刻风格 */
+  .title-traditional {
+    font-family: var(--font-serif);
+    font-weight: 900;
+    font-size: 1.15em;
+    color: var(--color-primary);
+    letter-spacing: 0.15em;
+    text-shadow:
+      2px 2px 4px rgba(0, 0, 0, 0.1),
+      0 0 20px rgba(217, 59, 48, 0.15);
+    position: relative;
+    display: inline-block;
+    margin-right: 0.1em;
+  }
+
+  /* "传承"的墨迹装饰效果 */
+  .title-traditional::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+  }
+
+  /* 连接文字 */
+  .title-connector {
+    font-size: 0.7em;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    margin: 0 0.2em;
+  }
+
+  /* "创新" - 科技感风格 */
+  .title-modern {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(
+      135deg,
+      #d93b30 0%,
+      #ff6b62 50%,
+      #d93b30 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
+  /* "创新"的科技光晕效果 */
+  .title-modern::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      #ff6b62,
+      transparent
+    );
+  }
+
   .vision-text {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 50px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 2;
+    color: var(--color-text-secondary);
+    margin: 40px auto 50px;
+    max-width: 600px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
   }
 
   .cta-group {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: var(--space-5);
+    flex-wrap: wrap;
   }
 
   .primary-btn {
-    background: #d93b30;
-    color: #fff;
-    padding: 14px 40px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.1rem;
+    background: transparent;
+    color: var(--color-primary);
+    padding: 18px 56px; /* 增大内边距 */
+    border-radius: var(--radius-2);
+    font-weight: 700; /* 加粗字体 */
+    font-size: 1.15rem; /* 增大字号 */
     text-decoration: none;
-    transition: all 0.3s;
-    box-shadow: 0 10px 20px rgba(217, 59, 48, 0.3);
+    transition: all var(--motion-medium) var(--motion-ease);
+    border: 3px solid var(--color-primary); /* 加粗边框 */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.05em; /* 增加字间距 */
+    box-shadow: 0 2px 8px rgba(217, 59, 48, 0.15); /* 添加阴影 */
+  }
+
+  /* 按钮悬停效果 */
+  .primary-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-primary);
+    opacity: 0;
+    transition: opacity var(--motion-medium) var(--motion-ease);
+    z-index: 0;
+  }
+
+  .primary-btn span {
+    position: relative;
+    z-index: 1;
   }
 
   .outline-btn {
     background: transparent;
-    color: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    padding: 14px 40px;
-    border-radius: 50px;
+    color: var(--color-text);
+    border: 2px solid var(--color-primary);
+    padding: 16px 48px;
+    border-radius: var(--radius-2);
     font-weight: 600;
     font-size: 1.1rem;
     text-decoration: none;
-    transition: all 0.3s;
+    transition: all var(--motion-medium) var(--motion-ease);
+    cursor: pointer;
   }
 
   .primary-btn:hover {
-    background: #ff4d42;
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(217, 59, 48, 0.4);
+    transform: translateY(-3px) scale(1.02); /* 添加轻微放大 */
+    border-color: var(--color-primary);
+    box-shadow:
+      0 6px 20px rgba(217, 59, 48, 0.25),
+      0 0 0 4px rgba(217, 59, 48, 0.1); /* 添加外圈光晕 */
+    color: var(--color-primary); /* 保持文字颜色 */
+    background: rgba(217, 59, 48, 0.05); /* 轻微背景色，不填充 */
   }
 
   .outline-btn:hover {
-    border-color: #fff;
-    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-primary);
+    background: var(--color-primary-bg);
+    color: var(--color-primary);
+    transform: translateY(-3px);
   }
 
   .pulse-anim {
-    animation: pulse 3s infinite;
+    animation: pulse-border 3s infinite;
   }
 
-  @keyframes pulse {
+  @keyframes pulse-border {
     0% {
       box-shadow: 0 0 0 0 rgba(217, 59, 48, 0.4);
     }
 
     70% {
-      box-shadow: 0 0 0 20px rgba(217, 59, 48, 0);
+      box-shadow: 0 0 0 10px rgba(217, 59, 48, 0);
     }
 
     100% {

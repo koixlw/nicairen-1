@@ -1,15 +1,16 @@
 export default {
   nav: {
     home: "Home",
-    about: "About Us",
+    craft: "Craft Process",
     inheritors: "Inheritors",
     gallery: "Gallery",
+    shop: "Shop",
     news: "News",
     aiInteractive: "AI Interactive",
     text2image: "Text to Image: Describe your imagination",
     styleFusion: "Image to Image: Transform your photos",
-    shop: "Shop",
     reserve: "Reserve",
+    about: "About Us",
   },
   logo: {
     title: "Nicairen",

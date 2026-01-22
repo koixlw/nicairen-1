@@ -26,161 +26,161 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from "vue";
+import { ref } from "vue";
 
-  const titleChars = "泥韵千秋".split("");
+const titleChars = "泥韵千秋".split("");
 
-  const scrollToStart = () => {
-    const el = document.getElementById("start");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+const scrollToStart = () => {
+  const el = document.getElementById("start");
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+};
 
-  const handleMouseMove = (e: MouseEvent) => {
-    // 可按需实现视差
-  };
+const handleMouseMove = (e: MouseEvent) => {
+  // 可按需实现视差
+};
 </script>
 
 <style scoped>
-  .hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 
-  .hero-bg-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: 0;
-  }
+.hero-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+}
 
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(44, 30, 28, 0.8));
-    z-index: 1;
-  }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(44, 30, 28, 0.8));
+  z-index: 1;
+}
 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: #fff;
-  }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
 
-  .hero-title {
-    font-size: 80px;
-    font-weight: bold;
-    letter-spacing: 10px;
-    margin-bottom: 20px;
-    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  }
+.hero-title {
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: 10px;
+  margin-bottom: 20px;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
 
-  .char-block {
-    display: inline-block;
+.char-block {
+  display: inline-block;
+  opacity: 0;
+  animation: charsEnter 1s ease-out forwards;
+}
+
+@keyframes charsEnter {
+  from {
     opacity: 0;
-    animation: charsEnter 1s ease-out forwards;
+    transform: translateY(40px);
   }
 
-  @keyframes charsEnter {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero-subtitle {
-    font-size: 24px;
-    font-weight: 300;
-    opacity: 0.9;
-    letter-spacing: 2px;
-  }
-
-  .fade-in-up {
-    opacity: 0;
-    animation: fadeInUp 1s ease-out 1s forwards;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-  }
-
-  .scroll-indicator:hover {
+  to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-subtitle {
+  font-size: 24px;
+  font-weight: 300;
+  opacity: 0.9;
+  letter-spacing: 2px;
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 1s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  .scroll-indicator .line {
-    width: 1px;
-    height: 60px;
-    background: #fff;
-    margin-bottom: 10px;
-    animation: scrollLine 2s infinite;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+}
+
+.scroll-indicator .line {
+  width: 1px;
+  height: 60px;
+  background: #fff;
+  margin-bottom: 10px;
+  animation: scrollLine 2s infinite;
+  transform-origin: top;
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: scaleY(0);
     transform-origin: top;
   }
 
-  @keyframes scrollLine {
-    0% {
-      transform: scaleY(0);
-      transform-origin: top;
-    }
-
-    50% {
-      transform: scaleY(1);
-      transform-origin: top;
-    }
-
-    51% {
-      transform: scaleY(1);
-      transform-origin: bottom;
-    }
-
-    100% {
-      transform: scaleY(0);
-      transform-origin: bottom;
-    }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
   }
 
-  .scroll-indicator .text {
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
   }
+
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+.scroll-indicator .text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
 </style>
 
 <template>
@@ -219,11 +219,7 @@
       </div>
 
       <div class="craft-spotlight" v-scroll-reveal="{ delay: 300 }">
-        <img
-          src="@/assets/images/shoubu.png"
-          alt="匠人手部特写"
-          class="spotlight-img"
-        >
+        <img src="@/assets/images/shoubu.png" alt="匠人手部特写" class="spotlight-img">
       </div>
     </div>
   </section>
@@ -234,82 +230,82 @@
 </script>
 
 <style scoped>
-  .dark-bg {
-    background-color: #2c1e1c;
-    color: #fff;
-    overflow: hidden;
-  }
+.dark-bg {
+  background-color: #2c1e1c;
+  color: #fff;
+  overflow: hidden;
+}
 
-  .bg-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.05;
-    background-image: radial-gradient(#d93b30 1px, transparent 1px);
-    background-size: 30px 30px;
-    pointer-events: none;
-  }
+.bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  background-image: radial-gradient(#d93b30 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
 
-  .section-desc {
-    max-width: 600px;
-    margin: 0 auto 60px;
-    color: rgba(255, 255, 255, 0.7);
-  }
+.section-desc {
+  max-width: 600px;
+  margin: 0 auto 60px;
+  color: rgba(255, 255, 255, 0.7);
+}
 
-  .text-center {
-    text-align: center;
-  }
+.text-center {
+  text-align: center;
+}
 
-  .craft-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin-bottom: 60px;
-  }
+.craft-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
 
-  .craft-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 30px 20px;
-    border-radius: 8px;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
+.craft-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px 20px;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
 
-  .craft-card:hover {
-    background: rgba(217, 59, 48, 0.1);
-    transform: translateY(-5px);
-    border-color: #d93b30;
-  }
+.craft-card:hover {
+  background: rgba(217, 59, 48, 0.1);
+  transform: translateY(-5px);
+  border-color: #d93b30;
+}
 
-  .card-icon {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
+.card-icon {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
 
-  .craft-card h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #fff;
-  }
+.craft-card h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #fff;
+}
 
-  .craft-card p {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.6;
-  }
+.craft-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
 
-  .craft-spotlight {
-    text-align: center;
-  }
+.craft-spotlight {
+  text-align: center;
+}
 
-  .spotlight-img {
-    max-width: 100%;
-    max-height: 400px;
-    filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.5));
-    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-  }
+.spotlight-img {
+  max-width: 100%;
+  max-height: 400px;
+  filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.5));
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
 </style>
