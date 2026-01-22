@@ -193,7 +193,16 @@
 
   const loaded = ref(false);
   const statsRef = ref(null);
-  const statistics = reactive([
+  
+  interface StatisticItem {
+    label: string;
+    value: number | string;
+    current: number;
+    suffix: string;
+    isSymbol?: boolean;
+  }
+
+  const statistics = reactive<StatisticItem[]>([
     { label: "纹样采集", value: 500, current: 0, suffix: "+" },
     { label: "合作高校", value: 10, current: 0, suffix: "+" },
     { label: "创新可能", value: "∞", current: 0, suffix: "", isSymbol: true },
@@ -236,7 +245,7 @@
       // 简单的缓动增长
       const duration = 2000; // 2秒
       const start = 0;
-      const end = stat.value;
+      const end = typeof stat.value === 'number' ? stat.value : 0;
       const startTime = performance.now();
 
       const animate = (currentTime: number) => {
