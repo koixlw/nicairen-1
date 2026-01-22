@@ -100,6 +100,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/process/': RouteRecordInfo<
+      '/process/',
+      '/process',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/reserve/': RouteRecordInfo<
       '/reserve/',
       '/reserve',
@@ -197,6 +204,12 @@ declare module 'vue-router/auto-routes' {
     'src/pages/privacy-policy/index.vue': {
       routes:
         | '/privacy-policy/'
+      views:
+        | never
+    }
+    'src/pages/process/index.vue': {
+      routes:
+        | '/process/'
       views:
         | never
     }
