@@ -72,13 +72,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/introduction/': RouteRecordInfo<
-      '/introduction/',
-      '/introduction',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/news/': RouteRecordInfo<
       '/news/',
       '/news',
@@ -180,12 +173,6 @@ declare module 'vue-router/auto-routes' {
     'src/pages/inheritors/index.vue': {
       routes:
         | '/inheritors/'
-      views:
-        | never
-    }
-    'src/pages/introduction/index.vue': {
-      routes:
-        | '/introduction/'
       views:
         | never
     }

@@ -21,11 +21,11 @@
           </li>
           <li class="nav-item">
             <router-link
-              to="/introduction"
+              to="/process"
               class="nav-link"
-              :class="{ active: isActive('/introduction') }"
+              :class="{ active: isActive('/process') }"
             >
-              {{ $t('nav.craft') }}
+              {{ $t('nav.process') }}
             </router-link>
           </li>
           <li class="nav-item">

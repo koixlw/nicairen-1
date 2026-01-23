@@ -6,8 +6,7 @@
       <div class="container hero-content">
         <div class="hero-text-wrapper">
           <h1 class="main-title">
-            <span class="title-line">七分塑</span>
-            <span class="title-line accent">三分绘</span>
+            <span class="title-line">泥塑工艺</span>
           </h1>
           <p class="subtitle">
             一捏一描，千年魂
@@ -15,6 +14,14 @@
           <p class="hero-description">
             泥彩人的制作融合了雕塑、绘画、民俗与信仰，历经选泥、塑形、阴干、打磨、上彩、开相等十余道工序。
           </p>
+        </div>
+        
+        <!-- 视频播放器 -->
+        <div class="video-container">
+          <video controls width="100%" height="auto" class="spotlight-video">
+            <source src="/src/assets/video/nicairen.mp4" type="video/mp4">
+            您的浏览器不支持视频播放。
+          </video>
         </div>
       </div>
     </section>
@@ -316,7 +323,8 @@ const onVideoTimeUpdate = () => {
 /* 引言区样式 */
 .hero-section {
   position: relative;
-  height: 70vh;
+  height: auto;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -343,10 +351,13 @@ const onVideoTimeUpdate = () => {
   text-align: center;
   max-width: 800px;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-text-wrapper {
-  margin: 0 auto;
+  margin: 0 auto 30px;
 }
 
 .main-title {
@@ -386,7 +397,21 @@ const onVideoTimeUpdate = () => {
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
   max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.video-container {
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.spotlight-video {
+  width: 100%;
+  display: block;
 }
 
 /* 通用 section 样式 */
@@ -716,15 +741,24 @@ const onVideoTimeUpdate = () => {
     font-size: 2.8rem;
   }
   
-  .timeline-item {
-    flex-direction: column;
-    text-align: center;
+  .subtitle {
+    font-size: 1.2rem;
   }
   
-  .timeline-media {
-    width: 100%;
-    height: 200px;
-    margin: 20px 0 0 0;
+  .section {
+    padding: 60px 0;
+  }
+  
+  .section-heading {
+    font-size: 2rem;
+  }
+  
+  .timeline-step-number {
+    margin-right: 15px;
+  }
+  
+  .materials-grid {
+    grid-template-columns: 1fr;
   }
 }
 
