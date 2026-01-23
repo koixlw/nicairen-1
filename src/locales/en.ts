@@ -1,7 +1,7 @@
 export default {
   nav: {
     home: "Home",
-    craft: "Craft Process",
+    process: "Process Flow",
     inheritors: "Inheritors",
     gallery: "Gallery",
     shop: "Shop",

@@ -1,7 +1,7 @@
 export default {
   nav: {
     home: "首页",
-    craft: "制作工艺",
+    process: "工艺流程",
     inheritors: "传承人",
     gallery: "作品展示",
     shop: "商城",
