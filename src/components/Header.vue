@@ -30,15 +30,6 @@
           </li>
           <li class="nav-item">
             <router-link
-              to="/process"
-              class="nav-link"
-              :class="{ active: isActive('/process') }"
-            >
-              {{ $t('nav.process') }}
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
               to="/inheritors"
               class="nav-link"
               :class="{ active: isActive('/inheritors') }"
