@@ -76,7 +76,7 @@
               我们致力于泥彩人文化的保护、传承和创新，通过展示优秀作品、培养年轻传承人、开展体验活动等方式，
               让这一古老的民间艺术在现代社会焕发新的生机与活力。
             </p>
-            <button @click="goToIntroduction" class="about-btn">
+            <button @click="goToProcess" class="about-btn">
               了解更多
             </button>
           </div>
@@ -488,13 +488,13 @@ const scrollToContent = () => {
 };
 
 // 跳转到制作工艺页面
-const goToIntroduction = () => {
+const goToProcess = () => {
   console.log("点击了解更多按钮");
   console.log("当前路由:", window.location.pathname);
   console.log("Router 实例:", router);
 
   try {
-    router.push("/introduction");
+    router.push("/process");
     console.log("路由跳转已触发");
   } catch (error) {
     console.error("路由跳转失败:", error);
